@@ -1,0 +1,35 @@
+/*   */
+
+/* find authors that begin with the letter J  */
+Select author from books where author like 'J%' group by author;
+
+
+
+/* find members that have an address in Florida  */
+select first_name, last_name, address from member where address like '%Florida%';
+
+
+
+/* find members names and emails that have an expiration date before 1 Apr 2026 */
+select first_name, last_name, email, exp_date from member where exp_date between '2022-03-20' and '2026-04-01';
+
+
+ 
+/*  find books that are price $18.99 or higher  */
+select title, price from books where price >= 18.99;
+
+
+
+/* find the name of members that have borrowed books, the title of the book and the return date  */
+select M.first_name, M.last_name, BK.title, B.return_date from member as M, borrowed as B, books as BK where M.member_id = B.member_id and B.book_id = BK.book_id;
+
+
+/////////////////////////// FUNCTIONS
+
+/* Check out book  */
+/* MemberID  BookID  IssueDate  ReturnDate  */
+SELECT checkout(1, 9, '2023-01-01', '2024-01-10');
+
+/* Return book  */
+/* MemberID  BookID  */
+SELECT returnbook (1, 9)
